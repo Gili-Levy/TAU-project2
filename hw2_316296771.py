@@ -111,14 +111,34 @@ print (positive)
 # QUESTION 3
 ############
 
+
+import time
 # 3a
 def inc(binary):
-	pass  # replace with your code
+	binary = binary[::-1] # flip string
+	for i in range (0,len(binary)): # go through bits
+		if binary[i] == "1": # if 1 - turn to 0
+			binary = binary[:i] + "0" + binary[i+1:]
+		elif binary[i] == "0": # if 0 - turn to 1 - and stop
+			binary = binary[:i] + "1" + binary[i+1:]
+			return (binary[::-1])
+	binary = binary + "1" # if only zeros(=originally only 1's) - add 1
+	return (binary[::-1])
 
 
 # 3b
 def dec(binary):
-	pass  # replace with your code
+	binary = binary[::-1]  # flip string
+	for i in range(0, len(binary)) :  # go through bits
+		if (binary[i] == "1") and (i==0): # 1 is 1st
+			binary = "0" + binary[i+1:]
+			return (binary[::-1])
+		elif (binary[i] == "1") and (i == len(binary)-1) : # 1 is last
+			binary = "1"*(len(binary)-1)
+			return binary
+		elif binary[i]  == "1" : # 1 is in the middle
+			binary = "1"*i + "0" + binary[i+1:]
+			return (binary[::-1])
 
 
 # 3c
