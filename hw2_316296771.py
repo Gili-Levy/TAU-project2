@@ -18,10 +18,10 @@ def risk_factor(n):
 
 # 1b
 def students_risk_factors(students):
-	dict={}
+	dict1 = {}
 	for key in students:
-		dict[key] = risk_factor(students[key])
-	return dict
+		dict1[key] = risk_factor(students[key])
+	return dict1
 
 
 # 1c
@@ -247,18 +247,26 @@ def check_goldbach_for_range(limit, primes_set):
 	return True
 
 
-set = parse_primes('primes.txt')
-print(check_goldbach_for_range(10000, set))
-
-
 # 5c1
 def check_goldbach_for_num_stats(n, primes_set):
-	pass  # replace with your code
+	couples = 0
+	for num in primes_set: #go through the numbers in the set
+		if (n-num) in primes_set:
+			couples += 1
+	return (couples // 2 + (couples % 2 > 0))
 
 
 # 5c2
 def check_goldbach_stats(limit, primes_set):
-	pass  # replace with your code
+	dict1 = {}
+	for i in range (4,limit,2):
+		key1 = check_goldbach_for_num_stats(i, primes_set)
+		if key1 in dict1:
+			dict1[key1] += 1
+		else:
+			dict1[key1] = 1
+	return dict1
+
 
 ############
 # QUESTION 6
