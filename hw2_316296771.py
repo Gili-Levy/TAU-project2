@@ -170,10 +170,18 @@ def leq(bin1, bin2):
 			return True
 
 
-
 # 3e
 def is_divisor(bin1, bin2):
-	pass  # replace with your code
+	if bin2 == bin1: # bin1 itself is bin1 divider
+		return True
+	elif leq(bin1,bin2)==True: # if bin2>bin1 -> bin2 is not a divider
+		return False
+	bin2_result = ""
+	while (len(bin2_result) <= len(bin1)):
+		bin2_result = add(bin2_result,bin2)
+		if bin2_result == bin1:
+			return True
+	return False
 
 
 ############
