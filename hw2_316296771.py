@@ -176,7 +176,7 @@ def is_divisor(bin1, bin2):
 	elif leq(bin1,bin2)==True: # if bin2>bin1 -> bin2 is not a divider
 		return False
 	bin2_result = ""
-	while leg(bin2_result,bin1): # as long as bin1 >= bin2_res
+	while leq(bin2_result,bin1): # as long as bin1 >= bin2_res
 		bin2_result = add(bin2_result,bin2)
 		if bin2_result == bin1:
 			return True
@@ -192,11 +192,9 @@ def has_repeat1(s, k):
 	lst = []
 	for i in range(0, len(s)-k+1): # list of all strings in k length
 		cur_str = s[i:i+k]
-		print (cur_str)
 		if cur_str in lst: # checks if cur_str is in list (=string repeat)
 			return True
 		lst.append(cur_str) # if not in list - add it to list
-		print (lst)
 	return False # if all cur_str were unique
 
 
@@ -205,10 +203,8 @@ def has_repeat1(s, k):
 def has_repeat2(s, k):
 	for i in range(0, len(s)-k):
 		str1 = s[i:i+k]
-		print (str1)
 		for j in range(i+1, len(s)-k+1):
 			str2 = s[j:j+k]
-			print (str2)
 			if str1 == str2:
 				return True
 	return False
@@ -230,7 +226,7 @@ def parse_primes(filename):
 
 def check_goldbach_for_num(n, primes_set):
 	for num in primes_set:
-		if (i-num) in primes_set:
+		if (n-num) in primes_set:
 			return True
 	return False
 
@@ -275,23 +271,48 @@ def check_goldbach_stats(limit, primes_set):
 
 # 6a
 def divisors(n):
-	pass  # replace with your code
+	lst = [x for x in range(1, n) if n % x == 0]
+	return lst
 
 
 # 6b
 def perfect_numbers(n):
-	pass  # replace with your code
+	perfects = 0
+	lst = []
+	i = 2 # the numbers we're going through
+	while perfects < n: # we want to find n numbers
+		sum_divs = 0
+		for div in divisors(i): # summing up the dividers
+			sum_divs += div
+		if sum_divs == i: # is perfect number?
+			lst.append(i)
+			perfects += 1
+		i += 1
+	return lst
 
 
 # 6c
 def abundant_density(n):
-	pass  # replace with your code
+	k = 0
+	for i in range (1, n+1):
+		sum_divs = 0
+		for div in divisors(i):
+			sum_divs += div
+		if sum_divs > i:
+			k += 1
+	return (k/n)
 
 
 # 6e
 def semi_perfect_3(n):
-	pass  # replace with your code
-
+	div_lst = divisors(n)
+	if len(div_lst) < 3:
+		return None
+	for x in div_lst: # first div
+		for y in div_lst[x:] : # second div
+			if (n-x-y) in div_lst : # does third div exist?
+				return [x,y,n-x-y] # yes!
+	return None
 
 ########
 # Tester
