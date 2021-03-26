@@ -143,12 +143,32 @@ def dec(binary):
 
 # 3c
 def add(bin1, bin2):
-	pass  # replace with your code
+	if len(bin1) > len(bin2): # choose loop length
+		max_bin = bin1[::-1]
+		min_bin = bin2[::-1]
+	else:
+		max_bin = bin2[::-1]
+		min_bin = bin1[::-1]
+	
+	for i in range (0, len(min_bin)): # go through short num bits
+		if (min_bin[i] == "1"):
+			max_bin = max_bin[:i] + inc(max_bin[i:][::-1])[::-1] # add 1 to long num rest
+	return max_bin[::-1]
+
 
 
 # 3d
 def leq(bin1, bin2):
-	pass  # replace with your code
+	if (len(bin2) > len(bin1)) or (bin1 == bin2):
+		return True
+	if len(bin2) < len(bin1):
+		return False
+	for i in range (1,len(bin2)): # lengths are equal, first num has to be same
+		if (bin1[i] == "1") and (bin2[i] == "0"):
+			return False
+		elif (bin1[i] == "0") and (bin2[i] == "1"):
+			return True
+
 
 
 # 3e
