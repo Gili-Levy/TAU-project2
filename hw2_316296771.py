@@ -112,7 +112,6 @@ print (positive)
 ############
 
 
-import time
 # 3a
 def inc(binary):
 	binary = binary[::-1] # flip string
@@ -226,16 +225,30 @@ def parse_primes(filename):
 					   for num_str in line.split(" ")[:-1] if num_str]
 	return set(primes)
 
+
 # 5a
 
-
 def check_goldbach_for_num(n, primes_set):
-	pass  # replace with your code
-
+	for num in primes_set:
+		if (i-num) in primes_set:
+			return True
+	return False
 
 # 5b
 def check_goldbach_for_range(limit, primes_set):
-	pass  # replace with your code
+	for i in range (4,limit,2):
+		found = False
+		for num in primes_set: #go through the numbers in the set
+			if (i-num) in primes_set:
+				found = True
+				break
+		if found == False:
+			return False
+	return True
+
+
+set = parse_primes('primes.txt')
+print(check_goldbach_for_range(10000, set))
 
 
 # 5c1
