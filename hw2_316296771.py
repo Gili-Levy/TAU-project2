@@ -177,7 +177,7 @@ def is_divisor(bin1, bin2):
 	elif leq(bin1,bin2)==True: # if bin2>bin1 -> bin2 is not a divider
 		return False
 	bin2_result = ""
-	while (len(bin2_result) <= len(bin1)):
+	while leg(bin2_result,bin1): # as long as bin1 >= bin2_res
 		bin2_result = add(bin2_result,bin2)
 		if bin2_result == bin1:
 			return True
@@ -190,13 +190,29 @@ def is_divisor(bin1, bin2):
 
 # 4a
 def has_repeat1(s, k):
-	pass  # replace with your code
+	lst = []
+	for i in range(0, len(s)-k+1): # list of all strings in k length
+		cur_str = s[i:i+k]
+		print (cur_str)
+		if cur_str in lst: # checks if cur_str is in list (=string repeat)
+			return True
+		lst.append(cur_str) # if not in list - add it to list
+		print (lst)
+	return False # if all cur_str were unique
+
 
 
 # 4b
 def has_repeat2(s, k):
-	pass  # replace with your code
-
+	for i in range(0, len(s)-k):
+		str1 = s[i:i+k]
+		print (str1)
+		for j in range(i+1, len(s)-k+1):
+			str2 = s[j:j+k]
+			print (str2)
+			if str1 == str2:
+				return True
+	return False
 
 ############
 # QUESTION 5
