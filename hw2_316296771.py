@@ -23,7 +23,6 @@ def students_risk_factors(students):
 		dict[key] = risk_factor(students[key])
 	return dict
 
-#####print(students_risk_factors({"n":10, "o":25, "a":14+21, "m":233232, "k":0}))
 
 # 1c
 def class_risk_factor(student_factors):
@@ -36,8 +35,6 @@ def class_risk_factor(student_factors):
 	return (sum/length)
 
 
-##print(class_risk_factor({}))
-
 # 1d
 def convert_to_list(student_factors):
 	lst = []
@@ -46,7 +43,6 @@ def convert_to_list(student_factors):
 	sorted_lst = sorted(lst, key=lambda tup: tup[1]) #sort tuples by risk factor
 	return sorted_lst
 
-###print(convert_to_list({"Tom": 0.65, "Alon": 0.3, "Gal": 0.55}))
 
 # 1e
 def partition_class(student_factors, threshold):
@@ -63,30 +59,53 @@ def partition_class(student_factors, threshold):
 	return (campus, home)
 
 
-print(partition_class({"Tom": 0.65, "Alon": 0.3, "Gal": 0.55}, 0.45))
-
-
-
 ############
 # QUESTION 2
 ############
 
 # 2a
 def coin():
-	pass  # replace with your code
+	rand = random.random()
+	if rand < 0.5:
+		return True
+	return False
 
 
 def roll_dice(d):
-	pass  # replace with your code
+	return random.randint(1, d)
 
 
 def roulette(bet_size, parity):
-	pass  # replace with your code
+	num = roll_dice(37)-1
+	if num == 0:
+		return 0
+	if num % 2 == 0: #checks num parity
+		parity_num="even"
+	else:
+		parity_num="odd"
+	if parity_num == parity: # win
+		return bet_size * 2
+	return 0 # lose
 
 
 def roulette_repeat(bet_size, n):
-	pass  # replace with your code
+	profit = 0
+	for i in range(0,n):
+		if coin() == True: # chooses odd/even
+			parity= "odd"
+		else:
+			parity = "even"
+		profit += roulette(bet_size,parity) - bet_size # checks each game profit
+	return profit
 
+"""
+positive = 0
+for i in range (1,101):
+	profit = roulette_repeat(100,10000)
+	if profit > 0:
+		positive += 1
+print (positive)
+"""
 
 ############
 # QUESTION 3
