@@ -15,7 +15,6 @@ def risk_factor(n):
 		return (1-(n/21*0.5))
 	return (0.5-((min(14,(n-21))/14*0.4))) # 2nd vaccine
 
-
 # 1b
 def students_risk_factors(students):
 	dict1 = {}
@@ -72,8 +71,14 @@ def coin():
 
 
 def roll_dice(d):
-	return random.randint(1, d)
+	rand = random.random()
+	for i in range (0,d):
+		if (rand >= i/d) and (rand < (i+1)/d): # splits 1 into d pieces and checks where the rand num lands
+			return i+1 # will always return value in this line
+	return i+1 # just in case
 
+d=10
+ 0 *1* 0.1 *2* 0.2 *3* 0.3 *4* 0.4 *5* 0.5 *6* 0.6 *7* 0.7 *8* 0.8 *9* 0.9 *10* 1
 
 def roulette(bet_size, parity):
 	num = roll_dice(37)-1
