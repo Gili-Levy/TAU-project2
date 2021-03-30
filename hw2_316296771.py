@@ -77,8 +77,6 @@ def roll_dice(d):
 			return i+1 # will always return value in this line
 	return i+1 # just in case
 
-d=10
- 0 *1* 0.1 *2* 0.2 *3* 0.3 *4* 0.4 *5* 0.5 *6* 0.6 *7* 0.7 *8* 0.8 *9* 0.9 *10* 1
 
 def roulette(bet_size, parity):
 	num = roll_dice(37)-1
@@ -104,13 +102,28 @@ def roulette_repeat(bet_size, n):
 	return profit
 
 """
-positive = 0
+positive200 = 0
 for i in range (1,101):
-	profit = roulette_repeat(100,10000)
+	profit = roulette_repeat(100,200)
 	if profit > 0:
-		positive += 1
-print (positive)
+		positive200 += 1
+print ("200: ", positive200)
+
+positive1000 = 0
+for i in range(1, 101):
+	profit = roulette_repeat(100, 1000)
+	if profit > 0:
+		positive1000 += 1
+print("1000: ", positive1000)
+
+positive10000 = 0
+for i in range(1, 101):
+	profit = roulette_repeat(100, 10000)
+	if profit > 0:
+		positive10000 += 1
+print("10000: ", positive10000)
 """
+
 
 ############
 # QUESTION 3
