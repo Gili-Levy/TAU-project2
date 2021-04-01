@@ -101,28 +101,6 @@ def roulette_repeat(bet_size, n):
 		profit += roulette(bet_size,parity) - bet_size # checks each game profit
 	return profit
 
-"""
-positive200 = 0
-for i in range (1,101):
-	profit = roulette_repeat(100,200)
-	if profit > 0:
-		positive200 += 1
-print ("200: ", positive200)
-
-positive1000 = 0
-for i in range(1, 101):
-	profit = roulette_repeat(100, 1000)
-	if profit > 0:
-		positive1000 += 1
-print("1000: ", positive1000)
-
-positive10000 = 0
-for i in range(1, 101):
-	profit = roulette_repeat(100, 10000)
-	if profit > 0:
-		positive10000 += 1
-print("10000: ", positive10000)
-"""
 
 
 ############
