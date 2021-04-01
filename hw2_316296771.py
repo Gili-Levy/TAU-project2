@@ -439,5 +439,3 @@ def test():
 
 	if semi_perfect_3(18) != [3, 6, 9] or semi_perfect_3(20) is not None:
 		print("6e - error in semi_perfect_3")
-
-test()
