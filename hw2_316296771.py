@@ -197,13 +197,26 @@ def has_repeat1(s, k):
 
 # 4b
 def has_repeat2(s, k):
-	for i in range(0, len(s)-k):
-		str1 = s[i:i+k]
-		for j in range(i+1, len(s)-k+1):
-			str2 = s[j:j+k]
-			if str1 == str2:
+	for i in range(0, len(s)-k):  # i is the beginning of the 1st string
+		for j in range(i+1, len(s)-k+1):  # j is the beginning of the 2nd string
+			s1 = s[i]
+			s2 = s[j]
+			if (s1 == s2) & (k == 1):  # if letters are equal
 				return True
+			if s1 == s2:  # if letters are equal
+				counter = 1
+				for n in range(1, k):  # go through the next k-1 letters and check them
+					s1 = s[i+n]
+					s2 = s[j+n]
+					if s1 != s2:  # if strings are not equal, search for a differnt j
+						break
+					elif s1 == s2:  # checks if each letter is equal
+						counter += 1
+
+					if counter == k:  # found k notes that are equal
+						return True
 	return False
+
 
 ############
 # QUESTION 5
@@ -426,3 +439,5 @@ def test():
 
 	if semi_perfect_3(18) != [3, 6, 9] or semi_perfect_3(20) is not None:
 		print("6e - error in semi_perfect_3")
+
+test()
