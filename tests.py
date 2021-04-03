@@ -122,6 +122,11 @@ def old_has_repeat2(s, k):
 	return False
 
 
+if not old_has_repeat2("ababa", 3) or old_has_repeat2("ababa", 4) or not old_has_repeat2("aba", 1):
+	print ("error")
+else:
+	print ("all good")
+
 
 def has_repeat2(s, k):
 	for i in range(0, len(s)-k): # i is the beginning of the 1st string
@@ -131,20 +136,43 @@ def has_repeat2(s, k):
 			if (s1 == s2) & (k == 1):  # if letters are equal
 				return True
 			if  s1 == s2:  # if letters are equal
-				counter = 1
 				for n in range (1, k):  # go through the next k-1 letters and check them
 					s1 = s[i+n]
 					s2 = s[j+n]
 					if s1 != s2:  # if strings are not equal, search for a differnt j
 						break
-					elif s1 == s2: # checks if each letter is equal
-						counter += 1
-					
-					if counter == k: # found k notes that are equal
+					if n == (k-1): # found k notes that are equal, reached to the last loop
 						return True
 	return False
 
-print (has_repeat2("aba",1))
+
+if not has_repeat2("ababa", 3) or has_repeat2("ababa", 4) or not has_repeat2("aba", 1):
+	print("error")
+else:
+	print("all good")
+
+
+def has_repeat2(s, k):
+	for i in range(0, len(s)-k):  # i is the beginning of the 1st string
+		for j in range(i+1, len(s)-k+1):  # j is the beginning of the 2nd string
+			s1 = s[i]
+			s2 = s[j]
+			if (s1 == s2) & (k == 1):  # if letters are equal
+				return True
+			if s1 == s2:  # if letters are equal
+				counter = 1
+				for n in range(1, k):  # go through the next k-1 letters and check them
+					s1 = s[i+n]
+					s2 = s[j+n]
+					if s1 != s2:  # if strings are not equal, search for a differnt j
+						break
+					elif s1 == s2:  # checks if each letter is equal
+						counter += 1
+
+					if counter == k:  # found k notes that are equal
+						return True
+	return False
+
 
 """
 if not has_repeat2("ababa", 3) or \
