@@ -281,9 +281,8 @@ def perfect_numbers(n):
 	lst = []
 	i = 2 # the numbers we're going through
 	while perfects < n: # we want to find n numbers
-		sum_divs = 0
-		for div in divisors(i): # summing up the dividers
-			sum_divs += div
+		sum_divs = sum(divisors(i)) # summing up the dividers
+		
 		if sum_divs == i: # is perfect number?
 			lst.append(i)
 			perfects += 1
@@ -293,14 +292,12 @@ def perfect_numbers(n):
 
 # 6c
 def abundant_density(n):
-	k = 0
+	count = 0
 	for i in range (1, n+1):
-		sum_divs = 0
-		for div in divisors(i):
-			sum_divs += div
+		sum_divs = sum(divisors(i))
 		if sum_divs > i:
-			k += 1
-	return (k/n)
+			count += 1
+	return (count/n)
 
 
 # 6e
@@ -309,9 +306,10 @@ def semi_perfect_3(n):
 	if len(div_lst) < 3:
 		return None
 	for x in div_lst: # first div
-		for y in div_lst[x:] : # second div
+		for y in div_lst : # second div
 			if (n-x-y) in div_lst : # does third div exist?
-				return [x,y,n-x-y] # yes!
+				if (x != y) and (y !=  (n-x-y) and (x != (n-x-y))):
+					return sorted([x,y,n-x-y]) # yes!
 	return None
 
 ########
@@ -430,5 +428,3 @@ def test():
 
 	if semi_perfect_3(18) != [3, 6, 9] or semi_perfect_3(20) is not None:
 		print("6e - error in semi_perfect_3")
-
-test()
